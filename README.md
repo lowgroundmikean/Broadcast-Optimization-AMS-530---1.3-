@@ -16,7 +16,7 @@ round, not only at termination.
 | `AMS530_Project1_Problem1.3.pdf` | The report |
 | `bcast32.c` | MPI implementation, validator and benchmark |
 | `arrays.h` | The 48 edges and 31 scheduled links, generated from the adjacency matrix |
-| `run_seawulf.sh` | Slurm batch script used to produce the measurements |
+| `run_seawulf.sh` | Slurm batch script used to produce the measurements, 40core was changed to 28core |
 | `bcast32_90162.out` | Raw output of the benchmark run |
 | `fig/` | Figures used in the report |
 
