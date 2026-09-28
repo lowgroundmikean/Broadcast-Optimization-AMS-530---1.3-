@@ -1,0 +1,227 @@
+host      : sn070
+nodes     : 2
+tasks     : 32
+started   : Sat Sep 26 05:11:21 EDT 2026
+
+############ 16 doubles (the assigned payload) ############
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 16 doubles (128 bytes), 2000 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)                9.109        7.615          6
+MPI_Bcast (library)                       6.120        3.111          -
+linear (naive baseline)                   9.737        7.471         31
+
+speedup of graph schedule over linear : 1.07x
+ratio graph schedule to MPI_Bcast     : 1.49x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2          0.360
+2               2            4          1.210
+3               4            8          3.904
+4               6           14          4.234
+5              10           24          4.045
+6               8           32          3.915
+
+############ message-size sweep ############
+---- count = 1 doubles (8 bytes) ----
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 1 doubles (8 bytes), 500 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)                6.069        4.962          6
+MPI_Bcast (library)                       3.795        2.378          -
+linear (naive baseline)                   8.598        7.038         31
+
+speedup of graph schedule over linear : 1.42x
+ratio graph schedule to MPI_Bcast     : 1.60x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2          0.559
+2               2            4          1.195
+3               4            8          2.924
+4               6           14          2.948
+5              10           24          2.349
+6               8           32          2.072
+
+---- count = 16 doubles (128 bytes) ----
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 16 doubles (128 bytes), 500 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)                9.419        7.412          6
+MPI_Bcast (library)                       6.038        4.003          -
+linear (naive baseline)                  11.187        8.833         31
+
+speedup of graph schedule over linear : 1.19x
+ratio graph schedule to MPI_Bcast     : 1.56x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2          0.437
+2               2            4          1.401
+3               4            8          4.012
+4               6           14          4.060
+5              10           24          4.053
+6               8           32          3.651
+
+---- count = 128 doubles (1024 bytes) ----
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 128 doubles (1024 bytes), 500 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)               15.062       13.667          6
+MPI_Bcast (library)                      10.511        7.975          -
+linear (naive baseline)                  32.799       29.799         31
+
+speedup of graph schedule over linear : 2.18x
+ratio graph schedule to MPI_Bcast     : 1.43x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2          1.978
+2               2            4          1.915
+3               4            8          4.412
+4               6           14          4.986
+5              10           24          5.240
+6               8           32          4.343
+
+---- count = 1024 doubles (8192 bytes) ----
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 1024 doubles (8192 bytes), 500 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)               39.578       36.378          6
+MPI_Bcast (library)                      29.273       22.660          -
+linear (naive baseline)                 106.061      102.103         31
+
+speedup of graph schedule over linear : 2.68x
+ratio graph schedule to MPI_Bcast     : 1.35x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2          6.639
+2               2            4          6.296
+3               4            8          9.363
+4               6           14          9.304
+5              10           24          9.718
+6               8           32          9.507
+
+---- count = 8192 doubles (65536 bytes) ----
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 8192 doubles (65536 bytes), 500 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)              159.150      146.444          6
+MPI_Bcast (library)                     106.675       89.162          -
+linear (naive baseline)                 522.035      490.672         31
+
+speedup of graph schedule over linear : 3.28x
+ratio graph schedule to MPI_Bcast     : 1.49x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2         15.787
+2               2            4         15.709
+3               4            8         34.779
+4               6           14         35.042
+5              10           24         29.929
+6               8           32         33.840
+
+---- count = 65536 doubles (524288 bytes) ----
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 65536 doubles (524288 bytes), 500 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)              998.903      971.380          6
+MPI_Bcast (library)                     690.552      626.720          -
+linear (naive baseline)                3022.658     2995.886         31
+
+speedup of graph schedule over linear : 3.03x
+ratio graph schedule to MPI_Bcast     : 1.45x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2         93.785
+2               2            4         94.603
+3               4            8        230.258
+4               6           14        231.072
+5              10           24        142.562
+6               8           32        235.292
+
+---- count = 262144 doubles (2097152 bytes) ----
+(32,3) graph broadcast, S = 6 rounds, 32 ranks
+payload 262144 doubles (2097152 bytes), 500 timed repetitions
+
+schedule validation against the graph:
+  all telephone-model rules satisfied, 31 edges, every vertex informed once
+
+correctness: 0 of 32 ranks hold the wrong payload
+
+broadcast                             mean (us)     min (us)     rounds
+---------                             ---------     --------     ------
+graph schedule (this work)             3919.527     3898.371          6
+MPI_Bcast (library)                    2844.114     2676.500          -
+linear (naive baseline)               11384.818    11362.445         31
+
+speedup of graph schedule over linear : 2.90x
+ratio graph schedule to MPI_Bcast     : 1.38x
+
+per-round breakdown (barrier-separated, so totals exceed the above)
+round       links     informed      mean (us)
+1               1            2        346.263
+2               2            4        357.459
+3               4            8        940.876
+4               6           14        955.838
+5              10           24        533.635
+6               8           32        924.220
+
+############ 32 ranks on a single node (intra-node) ############
+srun: error: Unable to create step for job 90162: More processors requested than permitted
+(single-node run skipped: needs a node with >= 32 cores)
+
+finished  : Sat Sep 26 05:11:49 EDT 2026
